@@ -58,3 +58,107 @@ const shortestPath = (edges, nodeA, nodeB) => {
 
 
 shortestPath(edges, 'w', 'z'); // -> 2
+
+
+
+
+
+
+
+
+const islandCount = (grid) => {
+  // todo
+  let movement = [[0,1],[1,0],[-1,0],[0,-1]]
+  
+  let visited = new Set()
+  let islands = 0;
+  
+  
+  
+  for(let x = 0; x < grid.length; x++){
+    for(let y = 0; y < grid[x].length;y++){
+      let current = grid[x][y]
+      if(current === "L"){
+        // if(!visited.has([x,y])){
+        if(!visited.has(x+","+y)){
+          visited.add(x+","+y)
+           let queue = [[x,y]]
+           while(queue.length > 0){
+             console.log(queue)
+             let position = queue.shift(); 
+      
+             for(let shift of movement){
+               
+               let newX = position[0] + shift[0]
+               let newY = position[1] + shift[1]
+
+               if(newX >= 0 && newX < grid.length){
+                 if(newY >= 0 && newY < grid[x].length){
+                   
+                   
+                   
+                   if(grid[newX][newY] === "L"){
+                     if(!visited.has(newX+","+newY)){
+                      visited.add(newX+","+newY)
+                      queue.push([newX,newY])  
+                     }
+                     
+                   } 
+                   
+                   
+                   
+                   
+                   
+                 }
+               }
+               
+             }     
+           }
+          console.log(x+","+y)
+          islands++
+        }
+      }
+    }
+  }
+  // console.log(visited)
+  return islands
+};
+
+
+
+
+const grid = [
+  ['W', 'L', 'W', 'W', 'W'],
+  ['W', 'L', 'W', 'W', 'W'],
+  ['W', 'W', 'W', 'L', 'W'],
+  ['W', 'W', 'L', 'L', 'W'],
+  ['L', 'W', 'W', 'L', 'L'],
+  ['L', 'L', 'W', 'W', 'W'],
+];
+
+islandCount(grid); // -> 3
+
+
+const grid = [
+  ['W', 'W'],
+  ['W', 'W'],
+  ['W', 'W'],
+];
+
+islandCount(grid); // -> 0
+
+
+// test_00 [PASS] 82ms 
+// test_01 [PASS] 65ms 
+// test_02 [PASS] 61ms 
+// test_03 [PASS] 63ms 
+
+
+
+
+
+
+
+
+
+
