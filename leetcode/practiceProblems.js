@@ -160,5 +160,31 @@ islandCount(grid); // -> 0
 
 
 
+const allTreePaths = (root) => {
+  // todo
+  
+  if(root=== null) return []
+  
+  if(root.left ===null && root.right === null) return [[root.val]]
+  
+  let paths = []
+  
+  let leftNodes = allTreePaths(root.left)
+  let rightNodes = allTreePaths(root.right)
+  
+  for(let subpaths of leftNodes){
+    paths.push([root.val, ...subpaths])
+  }
+  
+  for(let subpaths of rightNodes){
+    paths.push([root.val, ...subpaths])
+  }
+  
+  return paths
+  
+  
+};
+
+
 
 
