@@ -171,6 +171,7 @@ const allTreePaths = (root) => {
   
   let leftNodes = allTreePaths(root.left)
   let rightNodes = allTreePaths(root.right)
+  console.log(leftNodes)
   
   for(let subpaths of leftNodes){
     paths.push([root.val, ...subpaths])
