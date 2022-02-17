@@ -33,3 +33,29 @@ class BST {
 
 // Do not edit the line below.
 exports.findClosestValueInBst = findClosestValueInBst;
+
+
+//tree path finder
+const pathFinder = (root, target) => {
+  if (root === null) return null;
+  if (root.val === target) return [ root.val ];
+  
+  const leftPath = pathFinder(root.left, target);
+  if (leftPath !== null) return [ root.val, ...leftPath];
+  
+  const rightPath = pathFinder(root.right, target);
+  if (rightPath !== null) return [ root.val, ...rightPath];
+  
+  return null;
+};
+
+
+
+//how many levels a tree has
+const howHigh = (node) => {
+  if (node === null) return -1;
+
+  const leftHeight = howHigh(node.left);
+  const rightHeight = howHigh(node.right);
+  return 1 + Math.max(leftHeight, rightHeight);
+};
