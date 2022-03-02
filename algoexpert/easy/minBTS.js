@@ -59,3 +59,39 @@ const howHigh = (node) => {
   const rightHeight = howHigh(node.right);
   return 1 + Math.max(leftHeight, rightHeight);
 };
+
+
+
+
+const mostFrequentChar = (s) => {
+  // todo
+  
+  let count = {}
+  
+  for(let char of s){
+    if(count[char]){
+      count[char]++
+    }else{
+      count[char] = 1
+    }
+  }
+  
+  console.log(count)
+  
+  let best = null
+  for(let key of s){
+    console.log(key)
+    
+    if(best === null || count[key] > count[best]){
+      best = key
+    }
+    
+  }
+  
+  
+  return best
+};
+
+
+
+
