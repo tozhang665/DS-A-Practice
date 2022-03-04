@@ -129,3 +129,14 @@ const explore = (grid, r, c, visited) => {
   explore(grid, r, c + 1, visited);
   return true;
 };
+
+
+
+// height of a BST
+const howHigh = (node) => {
+  if (node === null) return -1;
+
+  const leftHeight = howHigh(node.left);
+  const rightHeight = howHigh(node.right);
+  return 1 + Math.max(leftHeight, rightHeight);
+};
