@@ -221,3 +221,71 @@ var threeSum = function(nums) {
   
   return ans
 };
+
+
+
+
+
+/**
+ * param {string} num1
+ * param {string} num2
+ * return {string}
+ */
+
+var multiply = function(num1, num2) {
+    if(num1 === "0"|| num2==="0") return "0"
+    let firstNums = [...num1].reverse()
+    let secondNums = [...num2].reverse()
+    
+    let products = []
+    for(let i = 0; i < secondNums.length; i++){
+        handleMultiply(firstNums,secondNums[i],i,products)
+    }
+    let ans = handleAdd(products)
+    return ans.reverse().join("")
+};
+
+
+let handleMultiply = (firstNums,secondNum,zeros,products) =>{
+    let currentNums = []
+    for(let j = 0; j < zeros;j++){
+        currentNums.push(0)
+    }
+    let carry = 0
+    let i = 0
+    let product = 0
+    while(i < firstNums.length || carry > 0){
+        let firstNum = firstNums[i] || 0
+        product = (parseInt(firstNum) * parseInt(secondNum) )+ carry
+        carry  = Math.floor(product / 10)
+        product = product % 10
+        currentNums.push(product)
+        i++
+    }
+    products.push(currentNums)
+}
+
+let handleAdd = (products) =>{
+    let end = products[products.length-1].length
+    let ans = []
+    
+    let carry = 0
+    let i = 0
+    
+    while(i < end || carry > 0){
+        let sum = carry
+        for(let j = 0; j < products.length ;j++){
+            let currentNum = products[j][i] !== undefined ? products[j][i] : 0 
+            sum += currentNum
+        }
+        
+        carry = Math.floor(sum / 10)
+        sum = sum % 10
+        ans.push(sum)
+        i++
+    }
+    return ans
+}
+    
+    
+    
