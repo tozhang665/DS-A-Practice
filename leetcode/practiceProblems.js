@@ -139,13 +139,13 @@ const grid = [
 islandCount(grid); // -> 3
 
 
-const grid = [
+const grid2 = [
   ['W', 'W'],
   ['W', 'W'],
   ['W', 'W'],
 ];
 
-islandCount(grid); // -> 0
+islandCount(grid2); // -> 0
 
 
 // test_00 [PASS] 82ms 
