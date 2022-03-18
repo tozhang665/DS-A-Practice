@@ -109,6 +109,7 @@ Array.prototype.quickSort = function (func) {
   const pivot = this[0];
   let left = this.slice(1).filter((el) => func(el, pivot) === -1);
   let right = this.slice(1).filter((el) => func(el, pivot) !== -1);
+  let right = this.slice(1).filter((el) => func(el, pivot) !== -1);
   left = left.quickSort(func);
   right = right.quickSort(func);
 
